@@ -1,87 +1,34 @@
-# Welcome to React Router!
+# History Stack Manipulation
 
-A modern, production-ready template for building full-stack React applications using React Router.
+We are currently experiencing problems with manipulating the history stack via History API `pushState` and `replaceState` on mobile devices.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Our goal is to manipulate the history stack in a way that if the user enters the page on `/tds` a stack of `/tds -> /result -> /input` gets built, so if the user goes back he lands on our custom page.
 
-## Features
+## Desired behavior
+1. Fresh Browser tab
+2. Open url `/tds`
+3. Browser back -> directs to `/result`
+3. Browser back -> directs to `/input`
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Current behavior
+The current behavior differs between browsers
 
-## Getting Started
+### Safari
+Works as expected
 
-### Installation
+### Chrome
+Works only after page interaction
 
-Install the dependencies:
+1. Fresh Browser tab
+2. Open url `/tds`
+3. Two-way behavior
+    - Browser back -> does **not** direct to `/result` -> directs to page before `/tds` (browser landingpage)
+    - Click button (with a `console.log('a')`) for some page interaction
+    -> browser back -> directs correctly to `/result` 
 
-```bash
-npm install
-```
+### Samsung Internet
+Detects history manipulation, blocks it and opens a popup with a warning for the user
 
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+## Feedback
+If you have any suggestions and ideas, please do not hesitate to contact me:
+- [Fynnian Brosius](mailto:fynnian.brosius@check24.de)
