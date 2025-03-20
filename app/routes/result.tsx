@@ -1,8 +1,8 @@
-import { Link } from 'react-router';
-import type { Route } from './+types/home';
+import { Link } from "react-router";
+import type { Route } from "./+types/result";
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'RESULT' }];
+  return [{ title: "RESULT" }];
 }
 export default function Result() {
   return (
