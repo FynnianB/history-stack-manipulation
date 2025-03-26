@@ -19,7 +19,7 @@ const DeepLinkHistoryStackContext = createContext<DeepLinkHistoryStackContextTyp
 
 const buildHistoryStack = async (stack: DeepLinkStack, navigate: NavigateFunction) => {
   for (const [index, entry] of stack.entries()) {
-    console.log('DeepLink HistoryStack Handler', 'prepending', entry);
+    console.log('DeepLink HistoryStack Handler', 'prepending', entry, index);
     await navigate(entry.pathname, { state: entry.state, replace: index === 0 });
   }
 };
@@ -30,7 +30,6 @@ export const DeepLinkHistoryStackHandler = ({ children }: { children: React.Reac
 
   const handleDeeplinkStack = useCallback(
       (stack: DeepLinkStack) => {
-        console.log(history.state.idx);
         if (history.state.idx === 0 && !stackBuildingRef.current) {
           console.log('DeepLink HistoryStack Handler', 'building stack', stack);
           stackBuildingRef.current = true;
