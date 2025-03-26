@@ -1,11 +1,9 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useCallback,
   useMemo,
   useRef,
-  useState,
   useLayoutEffect,
 } from 'react';
 import { useLocation, useMatches, useNavigationType } from 'react-router';
@@ -33,7 +31,6 @@ const DeepLinkStackContext = createContext<Context | null>(null);
 export function DeepLinkStackProvider({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const navigationType = useNavigationType();
-  const matches = useMatches();
   const isInitialMount = useRef(true);
   const currentStackRef = useRef<DeepLinkStack | undefined>(undefined);
 

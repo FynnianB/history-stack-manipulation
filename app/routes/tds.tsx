@@ -1,19 +1,19 @@
-import { Link } from 'react-router';
-import type { Route } from './+types/home';
-import { useDeepLinkHandler } from '~/components/deeplink-stack-provider';
-import { useEffect } from 'react';
+import { Link } from "react-router";
+import type { Route } from "./+types/tds";
+import { useDeepLinkHandler } from "~/components/deeplink-stack-provider";
+import { useLayoutEffect } from 'react';
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'TDS' }];
+  return [{ title: "TDS" }];
 }
 export default function TDS() {
   const deepLinkContext = useDeepLinkHandler();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     deepLinkContext.overrideStack([
-      { pathname: '/input' },
-      { pathname: '/result' },
-      { pathname: '/tds' },
+      { pathname: "/input" },
+      { pathname: "/result" },
+      { pathname: "/tds" },
     ]);
   }, [deepLinkContext]);
 
