@@ -1,6 +1,6 @@
-# History Stack Manipulation
+# History Stack Manipulation via navigateFunction
 
-We are currently experiencing problems with manipulating the history stack via History API `pushState` and `replaceState` on mobile devices.
+We are currently experiencing problems with manipulating the history stack on mobile devices.
 
 Our goal is to manipulate the history stack in a way that if the user enters the page on `/tds` a stack of `/tds -> /result -> /input` gets built, so if the user goes back he lands on our custom page.
 
@@ -26,8 +26,8 @@ Works only after page interaction
     - Click button (with a `console.log('a')`) for some page interaction
     -> browser back -> directs correctly to `/result` 
 
-### Samsung Internet
-Detects history manipulation, blocks it and opens a popup with a warning for the user
+## Manipulation via History API
+It seems like the history stack can not be manipulated directly via the `history` object because some browsers are blocking the behavior. For more information check out the branch `history-api`.
 
 ## Feedback
 If you have any suggestions and ideas, please do not hesitate to contact me:

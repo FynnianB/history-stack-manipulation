@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { DeepLinkStackProvider } from '~/components/deeplink-stack-provider';
+import DeepLinkHistoryStackHandler from '~/components/deeplink-history-stack-handler';
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,9 +44,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <DeepLinkStackProvider>
+    <DeepLinkHistoryStackHandler>
       <Outlet />
-    </DeepLinkStackProvider>
+    </DeepLinkHistoryStackHandler>
   );
 }
 
