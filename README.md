@@ -1,4 +1,4 @@
-# History Stack Manipulation
+# History Stack Manipulation via History API
 
 We are currently experiencing problems with manipulating the history stack via History API `pushState` and `replaceState` on mobile devices.
 
