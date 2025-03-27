@@ -6,10 +6,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import DeepLinkHistoryStackHandler from '~/components/deeplink-history-stack-handler';
 import type { Route } from "./+types/root";
 import "./app.css";
-import DeepLinkHistoryStackHandler from '~/components/deeplink-history-stack-handler';
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
