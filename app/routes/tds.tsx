@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/tds";
 import { useDeepLinkHistoryStack } from "~/components/deeplink-history-stack-handler";
-import { useLayoutEffect } from 'react';
+import { useEffect } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "TDS" }];
@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
 export default function TDS() {
   const { handleDeeplinkStack } = useDeepLinkHistoryStack();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     handleDeeplinkStack([
       { pathname: "/input" },
       { pathname: "/result" },
