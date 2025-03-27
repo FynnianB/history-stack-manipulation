@@ -1,5 +1,7 @@
 # History Stack Manipulation via History API
 
+Deployed under: [history-stack-manipulation-git-history-api-fynnianbs-projects.vercel.app](history-stack-manipulation-git-history-api-fynnianbs-projects.vercel.app)
+
 We are currently experiencing problems with manipulating the history stack via History API `pushState` and `replaceState` on mobile devices.
 
 Our goal is to manipulate the history stack in a way that if the user enters the page on `/tds` a stack of `/tds -> /result -> /input` gets built, so if the user goes back he lands on our custom page.
