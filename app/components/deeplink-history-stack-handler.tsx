@@ -2,6 +2,9 @@ import { createContext, useContext, useCallback, useRef } from "react";
 import { useNavigate, type NavigateFunction } from "react-router-dom";
 import { z } from "zod";
 
+const log = (text: string) =>
+  console.log(`[DeepLinkHistoryStackHandler] ${text}`);
+
 const DeepLinkStackSchema = z.array(
   z.object({
     pathname: z.string(),
@@ -23,7 +26,7 @@ const buildHistoryStack = async (
   navigate: NavigateFunction
 ) => {
   for (const [index, entry] of stack.entries()) {
-    console.log("DeepLink HistoryStack Handler", "prepending", entry, index);
+    log(`Appending ${entry.pathname} to history stack on index ${index}`);
     await navigate(entry.pathname, {
       state: entry.state,
       replace: index === 0,
@@ -42,7 +45,7 @@ export const DeepLinkHistoryStackHandler = ({
   const handleDeeplinkStack = useCallback(
     (stack: DeepLinkStack) => {
       if (history.state.idx === 0 && !stackBuildingRef.current) {
-        console.log("DeepLink HistoryStack Handler", "building stack", stack);
+        log("Building stack...");
         stackBuildingRef.current = true;
         buildHistoryStack(stack, navigate).finally(() => {
           stackBuildingRef.current = false;

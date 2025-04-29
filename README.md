@@ -1,4 +1,7 @@
-# History Stack Manipulation via navigateFunction
+# History Stack Manipulation via <span style="color:yellow">navigateFunction</span>
+
+> [!NOTE]  
+> For our latest version, see the `history-api` branch. This is based on the direct manipulation of the HistoryApi with the help of `pushState` and `replaceState`. 
 
 We are currently experiencing problems with manipulating the history stack on mobile devices.
 
@@ -11,7 +14,6 @@ Our goal is to manipulate the history stack in a way that if the user enters the
 3. Browser back -> directs to `/input`
 
 ## Current behavior
-The current behavior differs between browsers
 
 ### Safari
 Works as expected
@@ -26,8 +28,13 @@ Works only after page interaction
     - Click button (with a `console.log('a')`) for some page interaction
     -> browser back -> directs correctly to `/result` 
 
-## Manipulation via History API
-It seems like the history stack can not be manipulated directly via the `history` object because some browsers are blocking the behavior. For more information check out the branch `history-api`.
+### Samsung Internet
+Not working at all
+
+## Problems with this approach
+In a larger project, we unfortunately noticed a problem going back to the 0th index of the stack. More precisely, instead of `/tds -> /result -> /input`, the browser-back navigated as follows `/tds -> /result -> /input (instant redirect to /tds) -> /result -> /input (instant redirect to /tds) -> ...`. This means that you were caught in an endless loop and never got to `/input`.
+
+This problem could be solved by using the historyApi with `pushState` and `replaceState` instead of the navigateFunction. For more information check out the branch `history-api`.
 
 ## Feedback
 If you have any suggestions and ideas, please do not hesitate to contact me:
